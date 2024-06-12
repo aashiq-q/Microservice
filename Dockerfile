@@ -27,7 +27,7 @@ WORKDIR /usr/src/app
 
 COPY package*.json ./
 
-RUN npm install -g npm@10.8.1
+RUN npm install -g npm@10.8.1 --only=production
 
 FROM base as without-grpc-health-probe-bin
 
