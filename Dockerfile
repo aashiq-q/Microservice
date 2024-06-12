@@ -1,4 +1,4 @@
-# Copyright 2020 Google LLC
+#Copyright 2020 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-FROM node:18-alpine as base
+FROM node:20.2.0-alpine3.18@sha256:f25b0e9d3d116e267d4ff69a3a99c0f4cf6ae94eadd87f1bf7bd68ea3ff0bef7 as base
 
 FROM base as builder
 
@@ -27,10 +27,6 @@ WORKDIR /usr/src/app
 
 COPY package*.json ./
 
-# Update npm
-RUN npm install -g npm@latest
-
-# Install dependencies
 RUN npm install --only=production
 
 FROM base as without-grpc-health-probe-bin
