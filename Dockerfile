@@ -27,6 +27,10 @@ WORKDIR /usr/src/app
 
 COPY package*.json ./
 
+# Update npm
+RUN npm install -g npm@latest
+
+# Install dependencies
 RUN npm install --only=production
 
 FROM base as without-grpc-health-probe-bin
